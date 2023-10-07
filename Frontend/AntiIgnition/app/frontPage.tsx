@@ -1,14 +1,11 @@
-import React from "react";
-import { View, Text, TextInput} from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, Button } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+
+// run this command in the terminal to link react-native-maps
+// npx react-native link react-native-maps
 
 
-export default function frontPage() {
-    return (
-        <View>
-        <Text>Front Page</Text>
-        <TextInput placeholder="Username"></TextInput>
-        <TextInput placeholder="Password"></TextInput>
-        </View>
-    );
-}
 
+
+export default a;
