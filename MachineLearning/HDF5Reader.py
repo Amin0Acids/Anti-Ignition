@@ -36,27 +36,36 @@ matrix1 = np.random.random(size=(1000, 1000))
 direc = '/Users/lfy/Documents/liufy/code/Aminoacid/October 2023/soil moisture data'
 dirs = os.listdir(direc)
 
-moistureArr = np.array([])
-dataset1 = np.array([])
-dataset2 = np.array([])
+moistureArr = np.array([], dtype=np.float32)
+dataset1 = np.array([], dtype=np.float32)
+dataset2 = np.array([], dtype=np.float32)
 
 for idir in dirs:
     f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
     # f = h5py.File('/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46305_A_20231002T162528_N17701_001.h5')        ls = list(f.keys())
     # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
-    moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'))
-    data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'))
-    data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'))
+    moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
+    data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
+    data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
     # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
     print(data2.size)
-    for i in range(len(moistureArr)):
-        if moistureArr[i] == -9999:
+    x = len(moistureA)
+    i = 0
+    while i < x:
+        if moistureA[i] <= -9990:
             moistureA = np.delete(moistureA, i)
             data = np.delete(data, i)
             data2 = np.delete(data2, i)
-    dataset1 = np.concatenate(dataset1, data)
-    dataset2 = np.concatenate(dataset2, data2)
-    moistureArr = np.concatenate(moistureArr, moistureA)
+            x -= 1
+        else:
+            i += 1
+    print(moistureA)
+    print(moistureA.size)
+    print(data.size)
+    print(data2.size)
+    dataset1 = np.concatenate((dataset1, data))
+    dataset2 = np.concatenate((dataset2, data2))
+    moistureArr = np.concatenate((moistureArr, moistureA))
     f.close()
 
 plt.scatter(dataset2, dataset1, c=moistureArr, cmap='Greys')
