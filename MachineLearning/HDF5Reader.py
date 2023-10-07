@@ -33,29 +33,33 @@ matrix1 = np.random.random(size=(1000, 1000))
 #         print(i)
 # f.close()
 
-direc = '/Users/jliu61/Documents/SoilSet/'
+direc = '/Users/lfy/Documents/liufy/code/Aminoacid/October 2023/soil moisture data'
 dirs = os.listdir(direc)
 
-for idir in dirs:
-    if idir.endswith('.h5'):
-        f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
-        # f = h5py.File('/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46305_A_20231002T162528_N17701_001.h5')
-        ls = list(f.keys())
-        # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
-        moistureArr = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'))
-        data = f.get('Soil_Moisture_Retrieval_Data').get('latitude')
-        data2 = f.get('Soil_Moisture_Retrieval_Data').get('longitude')
-        # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
-        dataset1 = np.array(data)
-        dataset2 = np.array(data2)
-        # plt.scatter(dataset2, dataset1, c=moistureArr, cmap='gray')
-        # for i in range(len(moistureArr)):
-        #     if moistureArr[i] != -9999:
-        #         print(dataset1[i])
-        #         print(dataset2[i])
-        #         print(moistureArr[i])
-        f.close()
+moistureArr = np.array([])
+dataset1 = np.array([])
+dataset2 = np.array([])
 
+for idir in dirs:
+    f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
+    # f = h5py.File('/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46305_A_20231002T162528_N17701_001.h5')        ls = list(f.keys())
+    # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
+    moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'))
+    data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'))
+    data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'))
+    # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
+    print(data2.size)
+    for i in range(len(moistureArr)):
+        if moistureArr[i] == -9999:
+            moistureA = np.delete(moistureA, i)
+            data = np.delete(data, i)
+            data2 = np.delete(data2, i)
+    dataset1 = np.concatenate(dataset1, data)
+    dataset2 = np.concatenate(dataset2, data2)
+    moistureArr = np.concatenate(moistureArr, moistureA)
+    f.close()
+
+plt.scatter(dataset2, dataset1, c=moistureArr, cmap='Greys')
 # def print_hi(name):
 #     # Use a breakpoint in the code line below to debug your script.
 #     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
