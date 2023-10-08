@@ -6,6 +6,7 @@ import {
   StyleSheet,
   PanResponder,
   Animated,
+  Button,
 } from 'react-native';
 import dropdown from '../App';
 
@@ -34,7 +35,6 @@ function Dropdown(props: dropdownProps) {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
 
   const animatedValue = useRef(
     new Animated.Value(props.topBoundary + 150),
@@ -117,66 +117,81 @@ function Dropdown(props: dropdownProps) {
     }),
   ).current;
 
-//   console.log('currentpage' + currentPage);
-const renderPage = () => {
+  //   console.log('currentpage' + currentPage);
+  const renderPage = () => {
     console.log('currentpage' + currentPage);
     switch (currentPage) {
-        case 1:
-            console.log('page 1');
-            return (
-                <View style={{flex:1}}>
-                    <Animated.View
-                            style={{
-                                    transform: [{translateY: animatedValue}],
-                                    height: 500,
-                                    position: 'absolute',
-                                    top: targetPosition,
-                                    left: 0,
-                                    right: 0,
-                                    backgroundColor: 'black',
-                                    padding: 5,
-                            }}
-                            {...panResponder.panHandlers}
-                    >
-                    <Text>Page 1</Text>
-                    <TextInput placeholder="Enter text" />
-                    <Text style={{fontSize: 80, color: 'blue'}} onPress={() => handlePageChange(2)}>Next</Text>
-                    </Animated.View>
-                </View>
-            );
-        case 2:
-            console.log('page 2');
-            return (
-                <View style={{flex:1}}>
-                    <Animated.View
-                            style={{
-                                    transform: [{translateY: animatedValue}],
-                                    height: 500,
-                                    position: 'absolute',
-                                    top: targetPosition,
-                                    left: 0,
-                                    right: 0,
-                                    backgroundColor: 'yellow',
-                                    padding: 5,
-                            }}
-                            {...panResponder.panHandlers}
-                    >
-                    <Text>Page 2</Text>
-                    <TextInput placeholder="Enter text" />
-                    <Text onPress={() => handlePageChange(1)}>Previous</Text>
-                    </Animated.View>
-                </View>
-            );
-        default:
-            return null;
+      case 1:
+        console.log('page 1');
+        return (
+          <View style={styles.container}>
+            <Text style={styles.question}>get me the fire risk for...</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="enter address / leave blank for current location"
+            />
+            <Button
+              title="Submit"
+              onPress={() => {
+                // navigation.navigate('IntroPage');
+                // fetchCoordinate();
+              }}
+            />
+          </View>
+        );
+      case 2:
+        console.log('page 2');
+        return (
+          <View style={{flex: 1}}>
+            <Animated.View
+              style={{
+                transform: [{translateY: animatedValue}],
+                height: 500,
+                position: 'absolute',
+                top: targetPosition,
+                left: 0,
+                right: 0,
+                backgroundColor: 'yellow',
+                padding: 5,
+              }}
+              {...panResponder.panHandlers}>
+              <Text>Page 2</Text>
+              <TextInput placeholder="Enter text" />
+              <Text onPress={() => handlePageChange(1)}>Previous</Text>
+            </Animated.View>
+          </View>
+        );
+      case 3:
+        return (
+          <View style={{flex: 1}}>
+            <Animated.View
+              style={{
+                transform: [{translateY: animatedValue}],
+                height: 500,
+                position: 'absolute',
+                top: targetPosition,
+                left: 0,
+                right: 0,
+                backgroundColor: 'black',
+                padding: 5,
+              }}
+              {...panResponder.panHandlers}>
+              <Text>Page 1</Text>
+              <TextInput placeholder="Enter text" />
+              <Text
+                style={{fontSize: 80, color: 'blue'}}
+                onPress={() => handlePageChange(2)}>
+                Next
+              </Text>
+            </Animated.View>
+          </View>
+        );
+      default:
+        return null;
     }
-};
+  };
 
-return (
-    <View style={{flex: 1}}>
-        {renderPage()}
-    </View>
-);
+  return <View style={{flex: 1}}>{renderPage()}</View>;
 }
 
 const styles = StyleSheet.create({
