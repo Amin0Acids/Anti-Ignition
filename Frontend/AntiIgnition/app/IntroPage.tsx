@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, PanResponder, Animated } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, PanResponder, Animated} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import SwipeableMainPage from './popupPage';
 export let longitudes: number[];
@@ -52,10 +52,10 @@ function IntroPageUI() {
   }, []);
 
   return (
-    <View style={{flex:1}}>
-      <View style={{flex:1, backgroundColor:"red"}}>
-          <SwipeableMainPage/>
-          <Text style={{fontSize:8}}>AntiIgnition</Text>
+    <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: 'red'}}>
+        <SwipeableMainPage />
+        <Text style={{fontSize: 8}}>AntiIgnition</Text>
       </View>
     </View>
   );
