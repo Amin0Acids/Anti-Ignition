@@ -3,6 +3,7 @@ function IntroPageUI(props){
   let longitudes: number[];
   let latitudes: number[];
   let riskLevels: number[];
+  let currentRiskLevel: number;
 
   function fetchCoordinate() {
     fetch('', {
@@ -33,5 +34,14 @@ function IntroPageUI(props){
       .catch(error => console.log(error));
   }
 
-
+  function fetchRiskLevel(){
+    fetch('', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        currentRiskLevel = data.riskLevel;
+      })
+      .catch(error => console.log(error));
+  }
 }
