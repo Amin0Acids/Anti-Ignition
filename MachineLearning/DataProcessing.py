@@ -11,8 +11,6 @@ z = data[['bright_ti4']]  # , 'bright_ti5'
 z2 = data[['bright_ti5']]
 a = data['confidence'].map(c)
 
-
-
 print(a)
 maxv = 0
 x = x.to_numpy()
@@ -27,4 +25,4 @@ for i in range(len(z)):
 for i in range(len(z)):
     z[i] = z[i] / maxv
 
-# plt.scatter(x, y, s=1, c=z, cmap='hsv')
+plt.scatter(x, y, s=1, c=z, cmap='hsv')

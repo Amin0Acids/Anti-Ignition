@@ -5,17 +5,17 @@ import ModelSaveAndLoad as msal
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
-def train(model, optimizer, train_loader, num_epochs, batch_size):
+def train(model, optimizer, x_train, y_train, num_epochs, batch_size):
     criterion = nn.CrossEntropyLoss()
-    n_total_steps = len(train_loader)
+    n_total_steps = x_train.shape[0] * batch_size
     for epoch in range(num_epochs):
-        for i, (images, labels) in enumerate(train_loader):
-            images = images.to(device)
-            labels = labels.to(device)
+        for i in range(x_train.shape[1]):
+            x_train = x_train.to(device)
+            y_train = y_train.to(device)
 
             # forward pass
-            outputs = model(images)
-            loss = criterion(outputs, labels)
+            outputs = model(x_train)
+            loss = criterion(outputs, y_train)
 
             # backward pass
             optimizer.zero_grad()
