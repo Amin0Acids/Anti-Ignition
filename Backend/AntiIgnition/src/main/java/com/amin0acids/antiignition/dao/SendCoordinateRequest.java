@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class GetCoordinatesResponse {
-    public double[] longitudes;
-    public double[] latitudes;
-    public long[] risks;
+public class SendCoordinateRequest {
+    private long id;
+    private double lon;
+    private double lat;
 }

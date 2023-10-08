@@ -22,12 +22,22 @@ public class CoordinateController {
         this.coordinateService = coordinateService;
     }
 
-    @GetMapping("/getcoordinates")
-    public List<Coordinate> getCoordinates() {
-        return coordinateService.getCoordinates();
+    @GetMapping("/getCoordinates")
+    public ResponseEntity<GetCoordinatesResponse> getCoordinates() {
+        return ResponseEntity.ok(coordinateService.getCoordinates());
     }
     /*
     public ResponseEntity<GetCoordinatesResponse> getCoordinates() {
         return ResponseEntity.ok(CoordinateService.)
     } */
+
+    @PostMapping("/sendCoordinate") // send current coordinate
+    public ResponseEntity<SendCoordinateResponse> sendCoordinate(@RequestBody SendCoordinateRequest sendCoordinateRequest) {
+        return ResponseEntity.ok(coordinateService.sendCoordinate(sendCoordinateRequest));
+    }
+
+    @GetMapping("/getRiskLevel/{coordinate}") // 
+    public ResponseEntity<GetRiskLevelResponse> getRisk(@PathVariable Coordinate coordinate) {
+        return ResponseEntity.ok(coordinateService.getRiskLevel(coordinate));
+    }
 }
