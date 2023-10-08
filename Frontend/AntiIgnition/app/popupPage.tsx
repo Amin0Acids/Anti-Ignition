@@ -7,41 +7,53 @@ import React, {useState, useRef} from 'react';
 import {View, Text, PanResponder, Animated} from 'react-native';
 
 const Dropdown = () => {
-  const [position, setPosition] = useState(0);
+  let currentPos = -700;
+  let lastState = -700;
+  const [position, setPosition] = useState(-700);
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: (evt, gestureState) => {
         // Set the pan responder to be activated only if the gesture is a vertical swipe from the top of the screen
+        lastState = currentPos;
         return (gestureState.dy < -45 && Math.abs(gestureState.dx) < 459) ||
         (gestureState.dy > 45 && Math.abs(gestureState.dx) < 459);
       },
       onPanResponderMove: (evt, gestureState) => {
         // Update the position of the dropdown based on the gesture's dy value
-        console.log(gestureState.dy)
-        if(gestureState.dy > 0){
-          if(position < 0){
-            setPosition(0);
-          }
-          else{
-            setPosition(gestureState.dy);
-          }
-          console.log(position)
+        currentPos = lastState + gestureState.dy;
+        //limiter
+        if(currentPos < -700){
+          currentPos = -700;
         }
+        else if(currentPos > -300){
+          currentPos = -300;
+        }
+        setPosition(currentPos);
+        console.log(currentPos);
+        // console.log(gestureState.dy);
       },
       onPanResponderRelease: (evt, gestureState) => {
         // Animate the dropdown to either its open or closed position based on the gesture's dy value
-        if (gestureState.dy < -100) {
+        if (gestureState.dy > 25) {
+          console.log("Going down")
           Animated.timing(animatedValue, {
-            toValue: gestureState.dy < 100 ? -300 : 0,
+            //down
+            // toValue: Math.abs(Math.abs(currentPos) - 700),
+            toValue: 400 - (700 + currentPos),
             duration: 300,
             useNativeDriver: true,
           }).start();
-        } else {
+          lastState = -300;
+        } else if (gestureState.dy < -25) {
+          console.log("going up")
           Animated.timing(animatedValue, {
-            toValue: 0,
+            //up
+            // toValue: Math.abs(Math.abs(currentPos) - 700),
+            toValue: 700 + currentPos,
             duration: 300,
             useNativeDriver: true,
           }).start();
+          lastState = -700;
         }
       },
     }),

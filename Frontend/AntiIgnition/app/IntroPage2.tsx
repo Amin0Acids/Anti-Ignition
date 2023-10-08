@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     question:{
         fontSize: 40,
         // in the center of the screen top-down wise
-        top: '20%',
         textAlign: 'center',
         fontWeight: 'bold',
         fontFamily: 'sans-serif-condensed',
@@ -35,5 +34,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default infoScreen;
 
