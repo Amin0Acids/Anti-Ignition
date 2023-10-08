@@ -1,7 +1,7 @@
 import bello from "./app/reactSample";
-import frontPage from "./app/frontPage";
+import mainPage from "./app/MainPage";
 
 let testing = false;
 
 
-export default frontPage;
+export default mainPage;
