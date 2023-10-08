@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class SendCoordinateRequest {
-    private long id;
     private double lon;
     private double lat;
 }

@@ -6,9 +6,18 @@ import { longitudes, latitudes, riskLevels } from './IntroPageUI';
 
 export let currentRiskLevel: number;
 
+const [latitude, setLatitude] = useState(0);
+const [longitude, setLongitude] = useState(0);
 function fetchRiskLevel() {
   fetch('', {
     method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      latitude: String(latitude),
+      longitude: String(longitude),
+    }),
   })
     .then(response => response.json())
     .then(data => {

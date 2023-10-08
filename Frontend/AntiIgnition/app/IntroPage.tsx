@@ -19,24 +19,6 @@ function IntroPageUI() {
       })
       .catch(error => console.log(error));
   }
-  function postCoordinate(latitude: number, longitude: number) {
-    fetch('', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        latitude: String(latitude),
-        longitude: String(longitude),
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {})
-      .catch(error => console.log(error));
-  }
-
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
 
   useEffect(() => {
     // Get the user's current location

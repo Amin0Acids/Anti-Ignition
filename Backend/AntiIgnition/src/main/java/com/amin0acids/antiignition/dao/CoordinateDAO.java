@@ -6,9 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class GetRiskLevelResponse {
-    private Float riskLevel;
+public class CoordinateDAO {
+    private long id;
+    private Double longitude;
+    private Double latitude;
+    private Float risk;
 }
