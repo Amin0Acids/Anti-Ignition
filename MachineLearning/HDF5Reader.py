@@ -40,35 +40,59 @@ moistureArr = np.array([], dtype=np.float32)
 dataset1 = np.array([], dtype=np.float32)
 dataset2 = np.array([], dtype=np.float32)
 
-for idir in dirs:
-    f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
-    # f = h5py.File('/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46305_A_20231002T162528_N17701_001.h5')        ls = list(f.keys())
-    # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
-    moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
-    data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
-    data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
-    # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
-    print(data2.size)
-    x = len(moistureA)
-    i = 0
-    while i < x:
-        if moistureA[i] <= -9990:
-            moistureA = np.delete(moistureA, i)
-            data = np.delete(data, i)
-            data2 = np.delete(data2, i)
-            x -= 1
-        else:
-            i += 1
-    print(moistureA)
-    print(moistureA.size)
-    print(data.size)
-    print(data2.size)
-    dataset1 = np.concatenate((dataset1, data))
-    dataset2 = np.concatenate((dataset2, data2))
-    moistureArr = np.concatenate((moistureArr, moistureA))
-    f.close()
+f = h5py.File(tables.open_file(os.path.join(direc, dirs[0])).filename)
 
-plt.scatter(dataset2, dataset1, c=moistureArr, cmap='Greys')
+# print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
+
+moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
+data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
+data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
+date = np.array(f.get('Soil_Moisture_Retrieval_Data').get('tb_time_utc'))
+print(date)
+x = len(moistureA)
+i = 0
+while i < x:
+    if moistureA[i] <= -9990:
+        moistureA = np.delete(moistureA, i)
+        data = np.delete(data, i)
+        data2 = np.delete(data2, i)
+        x -= 1
+    else:
+        i += 1
+
+# plt.scatter(data2, data, c=moistureA, cmap='Greys')
+
+# for idir in dirs:
+#     f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
+#     # f = h5py.File('/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46305_A_20231002T162528_N17701_001.h5')        ls = list(f.keys())
+#     # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
+#     moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
+#     data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
+#     data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
+#     # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
+#     print(data2.size)
+#     x = len(moistureA)
+#     i = 0
+#     while i < x:
+#         if moistureA[i] <= -9990:
+#             moistureA = np.delete(moistureA, i)
+#             data = np.delete(data, i)
+#             data2 = np.delete(data2, i)
+#             x -= 1
+#         else:
+#             i += 1
+#     print(moistureA)
+#     print(moistureA.size)
+#     print(data.size)
+#     print(data2.size)
+#     dataset1 = np.concatenate((dataset1, data))
+#     dataset2 = np.concatenate((dataset2, data2))
+#     moistureArr = np.concatenate((moistureArr, moistureA))
+#     f.close()
+#
+# plt.scatter(dataset2, dataset1, c=moistureArr, cmap='Greys')
+
+
 # def print_hi(name):
 #     # Use a breakpoint in the code line below to debug your script.
 #     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
