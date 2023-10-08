@@ -30,6 +30,11 @@ function Dropdown(props: dropdownProps) {
 
   const [targetPosition, setTarget] = useState(props.topBoundary); //init position of dropdown
   const [gesturePosition, setGesturePosition] = useState({x: 0, y: 0}); //init position of gesture
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
 
   const animatedValue = useRef(
     new Animated.Value(props.topBoundary + 150),
@@ -112,26 +117,35 @@ function Dropdown(props: dropdownProps) {
     }),
   ).current;
 
-  return (
-    <View style={{flex: 1}}>
-      <Animated.View
-        style={{
-          transform: [{translateY: animatedValue}],
-          height: 500,
-          position: 'absolute',
-          top: targetPosition,
-          left: 0,
-          right: 0,
-          backgroundColor: 'black',
-          padding: 5,
-        }}
-        {...panResponder.panHandlers}>
-        <View style={{height: 50, backgroundColor: '#acc3e8', flex: 1}}>
-          <Text id="risklevel">RISK LEVEL GOES HERE</Text>
-        </View>
-      </Animated.View>
-    </View>
-  );
+  const renderPage = () => {
+    switch (currentPage) {
+      case 1:
+        return (
+          <View style={e=}>
+            <Text>Page 1</Text>
+            <TextInput style={} placeholder="Enter text" />
+            <Text onPress={() => handlePageChange(2)}>Next</Text>
+          </View>
+        );
+      case 2:
+        return (
+          <View style={}>
+            <Text>Page 2</Text>
+            <TextInput style={} placeholder="Enter text" />
+            <Text onPress={() => handlePageChange(3)}>Next</Text>
+            <Text onPress={() => handlePageChange(1)}>Previous</Text>
+          </View>
+        );
+      case 3:
+        return (
+          <View style={}>
+            <Text>Page 3</Text>
+            <TextInput style={} placeholder="Enter text" />
+            <Text onPress={() => handlePageChange(2)}>Previous</Text>
+          </View>
+        );
+      default:
+        return null;
 }
 
 const styles = StyleSheet.create({
