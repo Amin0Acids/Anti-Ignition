@@ -15,20 +15,20 @@ def result(model, output_loader):
         return r
 
 
-def testModel(model, test_loader):
+def testModel(model, x_test, y_test):
     with torch.no_grad():
         n_correct = 0
         n_samples = 0
-        for i, (images, labels) in enumerate(test_loader):
-            images = images.to(device)
-            labels = labels.to(device)
+        for i, in x_test:
+            x_test = x_test.to(device)
+            y_test = y_test.to(device)
 
-            outputs = model(images)
+            outputs = model(x_test)
 
             _, predicted = torch.max(outputs, 1)
 
-            n_samples += labels.shape[0]
-            n_correct += (labels == predicted).sum().item()
+            n_samples += y_test.shape[0]
+            n_correct += (y_test == predicted).sum().item()
 
         acc = 100.0 * n_correct / n_samples
         print(f'accuracy = {acc}')
