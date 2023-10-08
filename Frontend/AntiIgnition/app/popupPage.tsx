@@ -4,7 +4,6 @@ import MainPage from './MainPage';
 //not sure how well this works
 import currentRiskLevel from './MainPage';
 
-
 const SwipeableMainPage = () => {
   const panResponder = useRef(
     PanResponder.create({
@@ -38,9 +37,9 @@ const SwipeableMainPage = () => {
 
   return (
     <View style={{flex: 1}}>
-        <View style={{height: 50, backgroundColor: 'red'}}>
-            <Text id="risklevel">RISK LEVEL GOES HERE</Text>
-        </View>
+      <View style={{height: 50, backgroundColor: 'red'}}>
+        <Text id="risklevel">RISK LEVEL GOES HERE</Text>
+      </View>
       <Animated.View
         style={{
           transform: [{translateY: animatedValue}],

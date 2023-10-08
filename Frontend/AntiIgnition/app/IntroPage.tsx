@@ -1,6 +1,6 @@
 import './main.css';
-import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 export let longitudes: number[];
 export let latitudes: number[];
@@ -42,12 +42,12 @@ function IntroPageUI() {
     // Get the user's current location
     Geolocation.getCurrentPosition(
       position => {
-        const { latitude, longitude } = position.coords;
+        const {latitude, longitude} = position.coords;
         setLatitude(latitude);
         setLongitude(longitude);
       },
       error => console.log(error),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
   }, []);
 
