@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import MapView, {Marker, Polygon, Heatmap} from 'react-native-maps';
 //not sure how well this works
-import { longitudes, latitudes, riskLevels } from './IntroPageUI';
+import { longitudes, latitudes, riskLevels } from './IntroPage';
 
 export let currentRiskLevel: number;
 

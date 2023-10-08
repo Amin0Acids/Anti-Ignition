@@ -29,7 +29,7 @@ const Dropdown = () => {
         } else if (currentPos > -300) {
           currentPos = -300;
         }
-        setPosition(currentPos);
+        // setPosition(currentPos);
         console.log(currentPos);
         // console.log(gestureState.dy);
       },
@@ -40,7 +40,8 @@ const Dropdown = () => {
           Animated.timing(animatedValue, {
             //down
             // toValue: Math.abs(Math.abs(currentPos) - 700),
-            toValue: 400 - (700 + currentPos),
+            // toValue: 400 - (700 + currentPos),
+            toValue: 400,
             duration: 300,
             useNativeDriver: true,
           }).start();
@@ -50,7 +51,8 @@ const Dropdown = () => {
           Animated.timing(animatedValue, {
             //up
             // toValue: Math.abs(Math.abs(currentPos) - 700),
-            toValue: 700 + currentPos,
+            // toValue: 700 + currentPos,
+            toValue: 0,
             duration: 300,
             useNativeDriver: true,
           }).start();
@@ -63,7 +65,7 @@ const Dropdown = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, height:"50%"}}>
       <View style={{height: 50, backgroundColor: 'red'}}>
         <Text id="risklevel">RISK LEVEL GOES HERE</Text>
       </View>
@@ -72,10 +74,10 @@ const Dropdown = () => {
           transform: [{translateY: animatedValue}],
           height: '100%',
           position: 'absolute',
-          top: position,
+          top: animatedValue,
           left: 0,
           right: 0,
-          backgroundColor: 'white',
+          backgroundColor: 'brown',
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           padding: 20,
