@@ -5,7 +5,10 @@ import MapView, { Marker } from "react-native-maps";
 // run this command in the terminal to link react-native-maps
 // npx react-native link react-native-maps
 
-
+function a(){
+    return () => {
+    };
+}
 
 
 export default a;
