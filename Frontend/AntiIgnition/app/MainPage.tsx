@@ -9,6 +9,13 @@ export let currentRiskLevel: number;
 function fetchRiskLevel() {
   fetch('', {
     method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      latitude: String(latitude),
+      longitude: String(longitude),
+    }),
   })
     .then(response => response.json())
     .then(data => {
