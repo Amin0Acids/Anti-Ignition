@@ -1,0 +1,4 @@
+go under android/app/src/main/AndroidManifest.xml
+then look for the <!-- API KEY> thing at the bottom
+
+please dont overuse
