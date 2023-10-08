@@ -1,15 +1,9 @@
-# This is a sample Python script.
 import torch
 import numpy as np
 import h5py
 import os
 import tables
 import matplotlib.pyplot as plt
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-matrix1 = np.random.random(size=(1000, 1000))
 
 # with h5py.File("/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46145_A_20230921T175127_N17701_002.h5", 'r') as hdf:
 #     ls = list(hdf.keys())
@@ -36,71 +30,60 @@ matrix1 = np.random.random(size=(1000, 1000))
 direc = '/Users/lfy/Documents/liufy/code/Aminoacid/October 2023/soil moisture data'
 dirs = os.listdir(direc)
 
-moistureArr = np.array([], dtype=np.float32)
-dataset1 = np.array([], dtype=np.float32)
-dataset2 = np.array([], dtype=np.float32)
 
-f = h5py.File(tables.open_file(os.path.join(direc, dirs[0])).filename)
+def getData():
+    moistureArr = np.array([], dtype=np.float32)
+    dataset1 = np.array([], dtype=np.float32)
+    dataset2 = np.array([], dtype=np.float32)
 
-# print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
+    f = h5py.File(tables.open_file(os.path.join(direc, dirs[0])).filename)
 
-moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
-data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
-data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
-date = np.array(f.get('Soil_Moisture_Retrieval_Data').get('tb_time_utc'))
-print(date)
-x = len(moistureA)
-i = 0
-while i < x:
-    if moistureA[i] <= -9990:
-        moistureA = np.delete(moistureA, i)
-        data = np.delete(data, i)
-        data2 = np.delete(data2, i)
-        x -= 1
-    else:
-        i += 1
+    print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
 
-# plt.scatter(data2, data, c=moistureA, cmap='Greys')
+    moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
+    data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
+    data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
+    date = np.array(f.get('Soil_Moisture_Retrieval_Data').get('tb_time_utc'))
+    print(date)
+    # x = len(moistureA)
+    # i = 0
+    # while i < x:
+    #     if moistureA[i] <= -9990:
+    #         moistureA = np.delete(moistureA, i)
+    #         data = np.delete(data, i)
+    #         data2 = np.delete(data2, i)
+    #         x -= 1
+    #     else:
+    #         i += 1
 
-# for idir in dirs:
-#     f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
-#     # f = h5py.File('/Users/jliu61/Documents/SoilSet/SMAP_L2_SM_P_NRT_46305_A_20231002T162528_N17701_001.h5')        ls = list(f.keys())
-#     # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
-#     moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
-#     data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
-#     data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
-#     # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
-#     print(data2.size)
-#     x = len(moistureA)
-#     i = 0
-#     while i < x:
-#         if moistureA[i] <= -9990:
-#             moistureA = np.delete(moistureA, i)
-#             data = np.delete(data, i)
-#             data2 = np.delete(data2, i)
-#             x -= 1
-#         else:
-#             i += 1
-#     print(moistureA)
-#     print(moistureA.size)
-#     print(data.size)
-#     print(data2.size)
-#     dataset1 = np.concatenate((dataset1, data))
-#     dataset2 = np.concatenate((dataset2, data2))
-#     moistureArr = np.concatenate((moistureArr, moistureA))
-#     f.close()
-#
-# plt.scatter(dataset2, dataset1, c=moistureArr, cmap='Greys')
+    # plt.scatter(data2, data, c=moistureA, cmap='Greys')
 
+    for idir in dirs:
+        f = h5py.File(tables.open_file(os.path.join(direc, idir)).filename)
+        # print(np.array(f.get('Soil_Moisture_Retrieval_Data')))
+        moistureA = np.array(f.get('Soil_Moisture_Retrieval_Data').get('soil_moisture'), dtype=np.float32)
+        data = np.array(f.get('Soil_Moisture_Retrieval_Data').get('latitude'), dtype=np.float32)
+        data2 = np.array(f.get('Soil_Moisture_Retrieval_Data').get('longitude'), dtype=np.float32)
+        # data3 = f.get('Soil_Moisture_Retrieval_Data'.get(''))
+        print(data2.size)
+        x = len(moistureA)
+        i = 0
+        while i < x:
+            if moistureA[i] <= -9990:
+                moistureA = np.delete(moistureA, i)
+                data = np.delete(data, i)
+                data2 = np.delete(data2, i)
+                x -= 1
+            else:
+                i += 1
+        print(moistureA)
+        print(moistureA.size)
+        print(data.size)
+        print(data2.size)
+        dataset1 = np.concatenate((dataset1, data))
+        dataset2 = np.concatenate((dataset2, data2))
+        moistureArr = np.concatenate((moistureArr, moistureA))
+        f.close()
 
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-#
-#
-# # Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     x = torch.randn(3, 3, 3)
-#     print(x)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    plt.scatter(dataset2, dataset1, c=moistureArr, cmap='hsv')
+    return dataset2, dataset1, moistureArr
