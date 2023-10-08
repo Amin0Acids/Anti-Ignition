@@ -6,5 +6,10 @@ import DataFetch as df
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print(df.fetch_csv('VIIRS_SNPP_NRT.csv'))
+    pass
+
+    # training code
+
+    # data output code
+
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
