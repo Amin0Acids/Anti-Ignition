@@ -39,12 +39,11 @@ def loadModelCPU(model):
     return model
 
 
-def saveTrainingProgress(model, optimizer, epoch, loss):
+def saveTrainingProgress(model, optimizer, epoch):
     torch.save({
         'epoch': epoch,
         'model_state_dict': model.state_dict(),
-        'optimizer_state_dict': optimizer.state_dict(),
-        'loss': loss
+        'optimizer_state_dict': optimizer.state_dict()
     }, trainingPath)
 
 
@@ -53,5 +52,4 @@ def loadTrainingProgress(model, optimizer):
     model.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
     epoch = checkpoint['epoch'] + 1
-    loss = checkpoint['loss']
-    return model, optimizer, epoch, loss
+    return model, optimizer, epoch
