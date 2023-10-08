@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import MapView, {Marker, Polygon, Heatmap} from 'react-native-maps';
 
+//why not working
+
 let longitudes: number[];
 let latitudes: number[];
 let riskLevels: number[];
