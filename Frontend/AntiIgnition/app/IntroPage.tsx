@@ -1,4 +1,4 @@
-import './main.css';
+
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
