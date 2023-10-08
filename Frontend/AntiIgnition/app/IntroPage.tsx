@@ -1,5 +1,5 @@
 import './main.css';
-function IntroPageUI(props) {
+function IntroPageUI() {
   let longitudes: number[];
   let latitudes: number[];
   let riskLevels: number[];
@@ -53,4 +53,4 @@ function IntroPageUI(props) {
     </div>
   );
 }
-
+export default IntroPageUI;
