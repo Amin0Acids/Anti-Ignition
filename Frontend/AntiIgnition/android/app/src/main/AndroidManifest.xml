@@ -28,7 +28,7 @@
         <!--API KEY: THE "android:value IS GOOGLE MAPS API KEY" -->
         <meta-data
           android:name="com.google.android.geo.API_KEY"
-          android:value="I DIDNT ADD API KEY YET"/>
+          android:value="AIzaSyAJ6JQ9orctQOOI-i80k9OvWI8IU-ubZK4"/>
         <!--        -->
 
         
