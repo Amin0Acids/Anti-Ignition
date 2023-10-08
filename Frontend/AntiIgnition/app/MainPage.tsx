@@ -1,7 +1,21 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import MapView, {Marker, Polygon, Heatmap} from 'react-native-maps';
-import introPage from "./IntroPage";
+//not sure how well this works
+import { longitudes, latitudes, riskLevels } from './IntroPage';
+
+let currentRiskLevel: number;
+
+function fetchRiskLevel() {
+  fetch('', {
+    method: 'GET',
+  })
+    .then(response => response.json())
+    .then(data => {
+      currentRiskLevel = data.riskLevel;
+    })
+    .catch(error => console.log(error));
+}
 
 const HelloWorldApp = () => {
   
