@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa9ec3fe-6a12-4ced-ba70-32933f0a6042" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Frontend/AntiIgnition/app/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/AntiIgnition/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/AntiIgnition/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/AntiIgnition/app/frontPage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/AntiIgnition/app/reactSample.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/AntiIgnition/app/testPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/AntiIgnition/app/IntroPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/AntiIgnition/app/IntroPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/AntiIgnition/app/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/AntiIgnition/app/MainPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,11 +66,22 @@
       <option name="presentableId" value="Default" />
       <updated>1696724890993</updated>
       <workItem from="1696724893080" duration="6214000" />
-      <workItem from="1696732755048" duration="1634000" />
+      <workItem from="1696732755048" duration="3197000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

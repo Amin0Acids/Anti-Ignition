@@ -1,10 +1,9 @@
 import './main.css';
-function IntroPageUI(props) {
-  let longitudes: number[];
-  let latitudes: number[];
-  let riskLevels: number[];
-  let currentRiskLevel: number;
+export let longitudes: number[];
+export let latitudes: number[];
+export let riskLevels: number[];
 
+function IntroPageUI() {
   function fetchCoordinate() {
     fetch('', {
       method: 'GET',
@@ -17,7 +16,6 @@ function IntroPageUI(props) {
       })
       .catch(error => console.log(error));
   }
-
   function postCoordinate(latitude: number, longitude: number) {
     fetch('', {
       method: 'POST',
@@ -33,18 +31,6 @@ function IntroPageUI(props) {
       .then(data => {})
       .catch(error => console.log(error));
   }
-
-  function fetchRiskLevel() {
-    fetch('', {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(data => {
-        currentRiskLevel = data.riskLevel;
-      })
-      .catch(error => console.log(error));
-  }
-
   return (
     <div className="App">
       <header className="App-header">
@@ -53,3 +39,4 @@ function IntroPageUI(props) {
     </div>
   );
 }
+export default IntroPageUI;
