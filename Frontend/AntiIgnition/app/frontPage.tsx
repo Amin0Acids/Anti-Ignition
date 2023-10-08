@@ -22,9 +22,6 @@ const HelloWorldApp = () => {
     return (
         <View style={{ flex: 1 }}>
             <MapView style={{ flex: 1 }} region={region}>
-                {markers.map((marker, index) => (
-                    <Marker key={index} coordinate={marker} />
-                ))}
                 <Polygon coordinates={alaskaCoordinates} fillColor="rgba(220, 200, 0, 0.3)" />
             </MapView>
 
