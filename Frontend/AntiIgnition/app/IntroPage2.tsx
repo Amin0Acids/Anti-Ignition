@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, TextInput, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-// import {fetchCoordinate} from './IntroPageUI';
+import {fetchCoordinate} from './IntroPageUI';
 
 const navigation = useNavigation;
 
@@ -16,8 +16,8 @@ const infoScreen = () => {
       <Button
         title="Submit"
         onPress={() => {
-          // navigation.navigate('IntroPage');
-          // fetchCoordinate();
+          navigation.navigate('IntroPage');
+          fetchCoordinate();
         }}
       />
     </View>
