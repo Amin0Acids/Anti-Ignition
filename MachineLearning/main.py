@@ -10,12 +10,16 @@ import Training as t
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    dataset_x, dataset_y, dataset_data = hr.getData()
-    dataset_x = torch.from_numpy(dataset_x)
-    dataset_y = torch.from_numpy(dataset_y)
-    dataset_data = torch.from_numpy(dataset_data)
-    dataset = torch.stack((dataset_x, dataset_y, dataset_data))
-    print(dataset)
+    # dataset_x, dataset_y, dataset_data = hr.getData()
+    # dataset_x = torch.from_numpy(dataset_x)
+    # dataset_y = torch.from_numpy(dataset_y)
+    # dataset_data = torch.from_numpy(dataset_data)
+    dataset_x = torch.tensor([1, 2, 3, 4, 5])
+    dataset_y = torch.tensor([1, 2, 3, 4, 5])
+    dataset_data = torch.tensor([1, 2, 3, 4, 5])
+    x_dataset = torch.stack((dataset_x, dataset_y, dataset_data))
+    print(x_dataset)
+    print(x_dataset.shape)
 
     # training code
     input_size = 784
@@ -27,7 +31,7 @@ if __name__ == '__main__':
 
     model = m.NeuralNet(input_size, hidden_size, num_classes)
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-    t.train(model, optimizer, dataset, num_epochs, batch_size)
+    t.train(model, optimizer, x_dataset, y_dataset, num_epochs, batch_size)
     # data output code
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
