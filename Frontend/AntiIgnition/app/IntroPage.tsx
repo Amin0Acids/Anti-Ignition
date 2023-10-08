@@ -8,11 +8,14 @@ export let riskLevels: number[];
 
 
 interface draggableWindowProps{
-  color?: string;
-  height?: number;
+  color?: string; //color of the draggable window
+  height?: number; //height of the draggable window
   dragY?: boolean;
+  dragX?: boolean;  // if you want to limit drag to one axis
   limitY?: number;
-  limitX?: number;
+  limitX?: number; //if you want to limit the swipping distance
+  snapY?: number; //if swiping fast enough, it will go fully to the limit
+  snapX?: number;
 }
 
 
@@ -24,15 +27,19 @@ export function Draggable(props: draggableWindowProps){
     onStartShouldSetPanResponder: () => true,
 
     onPanResponderMove: (event, gestureState) => {
-      setDraggingY(gestureState.dy);
+      if(props.dragY){
+        setPosition({x: 0, y: gestureState.dy});
+      }
+      
     },
-  
+
+    onPanResponderRelease: (event, gestureState) => {
+      setDragging(false);
+      setPosition({x:0, y:0});
+    }
     
   });
 
-  function handleDrag(){
-    props.onDrag(draggingY);
-  }
   return(
     <View>
       <View style={{backgroundColor: props.color, height: props.height}}>
