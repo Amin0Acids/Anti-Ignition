@@ -22,8 +22,8 @@ public class Coordinate {
     @GeneratedValue(strategy = GenerationType.AUTO) //idk what type it's supposed to be
     private Long id; 
     @ManyToOne
-    private Double longitude; //x
-    private Double latitude; //y
+    private Integer longitude; //x
+    private Integer latitude; //y
     private Float riskLevel; //number   
 
 

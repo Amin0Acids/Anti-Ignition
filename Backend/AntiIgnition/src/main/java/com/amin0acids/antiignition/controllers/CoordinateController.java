@@ -28,7 +28,7 @@ public class CoordinateController {
     }
 
     @GetMapping("/getRiskLevel/{lon}/{lat}") 
-    public ResponseEntity<GetRiskLevelResponse> getRisk(@PathVariable Double lon, @PathVariable Double lat) {
+    public ResponseEntity<GetRiskLevelResponse> getRisk(@PathVariable Integer lon, @PathVariable Integer lat) {
         return ResponseEntity.ok(coordinateService.getRiskLevel(lon, lat));
     }
 }

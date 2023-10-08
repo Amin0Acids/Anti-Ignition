@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface CoordinateRepo extends JpaRepository<Coordinate, Long> { //second parameter is id type
-    Optional<Coordinate> findByCoordinate(Double lon, Double lat);
-    Optional<List<Coordinate>> findByLong(Double lon);
-    Optional<List<Coordinate>> findByLat(Double lat);
+    Optional<Coordinate> findByCoordinate(Integer lon, Integer lat);
+    Optional<List<Coordinate>> findByLong(Integer lon);
+    Optional<List<Coordinate>> findByLat(Integer lat);
     Optional<List<Coordinate>> findByRisk(Float risk);
     }

@@ -39,7 +39,7 @@ public class CoordinateService {
                 .build();
     }
 
-    public GetRiskLevelResponse getRiskLevel(Double lon, Double lat) {
+    public GetRiskLevelResponse getRiskLevel(Integer lon, Integer lat) {
         Coordinate coord = coordinateRepo.findByCoordinate(lon, lat).orElseThrow();
         Float risk = coord.getRiskLevel();
         return GetRiskLevelResponse.builder()
