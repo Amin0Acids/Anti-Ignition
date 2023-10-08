@@ -27,12 +27,7 @@ public class CoordinateController {
         return ResponseEntity.ok(coordinateService.getCoordinates());
     }
 
-    @PostMapping("/sendCoordinate") // send current coordinate
-    public ResponseEntity<SendCoordinateResponse> sendCoordinate(@RequestBody SendCoordinateRequest sendCoordinateRequest) {
-        return ResponseEntity.ok(coordinateService.sendCoordinate(sendCoordinateRequest));
-    }
-
-    @GetMapping("/getRiskLevel/{lon}/{lat}") // 
+    @GetMapping("/getRiskLevel/{lon}/{lat}") 
     public ResponseEntity<GetRiskLevelResponse> getRisk(@PathVariable Double lon, @PathVariable Double lat) {
         return ResponseEntity.ok(coordinateService.getRiskLevel(lon, lat));
     }

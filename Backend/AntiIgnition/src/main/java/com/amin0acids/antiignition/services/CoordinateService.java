@@ -39,14 +39,6 @@ public class CoordinateService {
                 .build();
     }
 
-    public SendCoordinateResponse sendCoordinate(SendCoordinateRequest sendCoordinateRequest) {
-        // send coordinates to repo
-        
-        return SendCoordinateResponse.builder()
-                .isSuccessful(true)
-                .build();
-    }
-
     public GetRiskLevelResponse getRiskLevel(Double lon, Double lat) {
         Coordinate coord = coordinateRepo.findByCoordinate(lon, lat).orElseThrow();
         Float risk = coord.getRiskLevel();
@@ -55,3 +47,4 @@ public class CoordinateService {
                 .build();
     }
 }
+
