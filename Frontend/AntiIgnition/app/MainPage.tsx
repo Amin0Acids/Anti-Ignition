@@ -1,55 +1,10 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import MapView, {Marker, Polygon, Heatmap} from 'react-native-maps';
-
-//why not working
-
-let longitudes: number[];
-let latitudes: number[];
-let riskLevels: number[];
-let currentRiskLevel: number;
-
-function fetchCoordinate() {
-  fetch('', {
-    method: 'GET',
-  })
-    .then(response => response.json())
-    .then(data => {
-      latitudes = data.latitudes;
-      longitudes = data.longitudes;
-      riskLevels = data.riskLevels;
-    })
-    .catch(error => console.log(error));
-}
-
-function postCoordinate(latitude: number, longitude: number) {
-  fetch('', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      latitude: String(latitude),
-      longitude: String(longitude),
-    }),
-  })
-    .then(response => response.json())
-    .then(data => {})
-    .catch(error => console.log(error));
-}
-
-function fetchRiskLevel() {
-  fetch('', {
-    method: 'GET',
-  })
-    .then(response => response.json())
-    .then(data => {
-      currentRiskLevel = data.riskLevel;
-    })
-    .catch(error => console.log(error));
-}
+import introPage from "./IntroPage";
 
 const HelloWorldApp = () => {
+  
   //how this works: latitude will control the up and down movement of the map, longitude will control the left and right movement of the map, latitudeDelta will control the zoom in and out of the map, longitudeDelta will control the zoom in and out of the map, the higher the number the more zoomed in it is
   const [region, setRegion] = useState({
     latitude: 71.35776357679594,
