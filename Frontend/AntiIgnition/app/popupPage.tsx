@@ -3,7 +3,6 @@
 import MainPage from './MainPage';
 //not sure how well this works
 import currentRiskLevel from './MainPage';
-
 import React, {useState, useRef} from 'react';
 import {View, Text, PanResponder, Animated} from 'react-native';
 
@@ -52,6 +51,9 @@ const Dropdown = () => {
 
   return (
     <View style={{flex: 1}}>
+      <View style={{height: 50, backgroundColor: 'red'}}>
+        <Text id="risklevel">RISK LEVEL GOES HERE</Text>
+      </View>
       <Animated.View
         style={{
           transform: [{translateY: animatedValue}],
@@ -71,5 +73,4 @@ const Dropdown = () => {
     </View>
   );
 };
-
 export default Dropdown;
