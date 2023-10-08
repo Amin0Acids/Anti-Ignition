@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
-import MapView, {Marker, Polygon} from 'react-native-maps';
+import MapView, {Marker, Polygon, Heatmap} from 'react-native-maps';
 
 const HelloWorldApp = () => {
   const [region, setRegion] = useState({
@@ -32,10 +32,7 @@ const HelloWorldApp = () => {
         {markers.map((marker, index) => (
           <Marker key={index} coordinate={marker} />
         ))}
-        <Polygon
-          coordinates={alaskaCoordinates}
-          fillColor="rgba(220, 200, 0, 0.3)"
-        />
+        <Heatmap points={alaskaCoordinates} />
       </MapView>
 
       <Text>BA</Text>
