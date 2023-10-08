@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class GetCoordinatesResponse {
-    public double[] longitudes;
-    public double[] latitudes;
-    public long[] risks;
+public class GetRiskLevelResponse {
+    private long riskLevel;
 }
