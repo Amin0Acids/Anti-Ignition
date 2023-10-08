@@ -27,4 +27,4 @@ for i in range(len(z)):
 for i in range(len(z)):
     z[i] = z[i] / maxv
 
-plt.scatter(x, y, s=1, c=z, cmap='hsv')
+# plt.scatter(x, y, s=1, c=z, cmap='hsv')
