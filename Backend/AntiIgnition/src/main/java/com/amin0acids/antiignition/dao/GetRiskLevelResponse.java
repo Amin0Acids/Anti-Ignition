@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class GetRiskLevelResponse {
-    private long riskLevel;
+    private Float riskLevel;
 }

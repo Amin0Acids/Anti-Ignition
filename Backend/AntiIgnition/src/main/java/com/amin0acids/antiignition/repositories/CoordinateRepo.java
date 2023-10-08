@@ -13,5 +13,5 @@ public interface CoordinateRepo extends JpaRepository<Coordinate, Long> { //seco
     Optional<Coordinate> findByCoordinate(Double lon, Double lat);
     Optional<List<Coordinate>> findByLong(Double lon);
     Optional<List<Coordinate>> findByLat(Double lat);
-    Optional<List<Coordinate>> findByRisk(Long risk);
+    Optional<List<Coordinate>> findByRisk(Float risk);
     }
