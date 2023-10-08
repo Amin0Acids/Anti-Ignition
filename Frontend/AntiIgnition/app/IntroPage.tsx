@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, PanResponder, Animated } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
+import SwipeableMainPage from './popupPage';
 export let longitudes: number[];
 export let latitudes: number[];
 export let riskLevels: number[];
@@ -42,21 +42,22 @@ function IntroPageUI() {
     // Get the user's current location
     Geolocation.getCurrentPosition(
       position => {
-        const { latitude, longitude } = position.coords;
+        const {latitude, longitude} = position.coords;
         setLatitude(latitude);
         setLongitude(longitude);
       },
       error => console.log(error),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>AntiIgnition</h1>
-      </header>
-    </div>
+    <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor:"red"}}>
+          <SwipeableMainPage/>
+          <Text style={{fontSize:8}}>AntiIgnition</Text>
+      </View>
+    </View>
   );
 }
 export default IntroPageUI;

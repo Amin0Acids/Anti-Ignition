@@ -1,4 +1,4 @@
-import bello from "./app/IntroPageUI";
+import bello from "./app/IntroPage";
 import mainPage from "./app/MainPage";
 
 let testing = false;
