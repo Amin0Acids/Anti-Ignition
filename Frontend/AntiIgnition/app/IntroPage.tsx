@@ -1,5 +1,5 @@
 import './main.css';
-function IntroPageUI(props){
+function IntroPageUI(props) {
   let longitudes: number[];
   let latitudes: number[];
   let riskLevels: number[];
@@ -34,7 +34,7 @@ function IntroPageUI(props){
       .catch(error => console.log(error));
   }
 
-  function fetchRiskLevel(){
+  function fetchRiskLevel() {
     fetch('', {
       method: 'GET',
     })
@@ -44,4 +44,12 @@ function IntroPageUI(props){
       })
       .catch(error => console.log(error));
   }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>AntiIgnition</h1>
+      </header>
+    </div>
+  );
 }
