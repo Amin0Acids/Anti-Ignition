@@ -15,17 +15,18 @@ const Dropdown = () => {
       onMoveShouldSetPanResponder: (evt, gestureState) => {
         // Set the pan responder to be activated only if the gesture is a vertical swipe from the top of the screen
         lastState = currentPos;
-        return (gestureState.dy < -45 && Math.abs(gestureState.dx) < 459) ||
-        (gestureState.dy > 45 && Math.abs(gestureState.dx) < 459);
+        return (
+          (gestureState.dy < -45 && Math.abs(gestureState.dx) < 459) ||
+          (gestureState.dy > 45 && Math.abs(gestureState.dx) < 459)
+        );
       },
       onPanResponderMove: (evt, gestureState) => {
         // Update the position of the dropdown based on the gesture's dy value
         currentPos = lastState + gestureState.dy;
         //limiter
-        if(currentPos < -700){
+        if (currentPos < -700) {
           currentPos = -700;
-        }
-        else if(currentPos > -300){
+        } else if (currentPos > -300) {
           currentPos = -300;
         }
         setPosition(currentPos);
@@ -35,7 +36,7 @@ const Dropdown = () => {
       onPanResponderRelease: (evt, gestureState) => {
         // Animate the dropdown to either its open or closed position based on the gesture's dy value
         if (gestureState.dy > 25) {
-          console.log("Going down")
+          console.log('Going down');
           Animated.timing(animatedValue, {
             //down
             // toValue: Math.abs(Math.abs(currentPos) - 700),
@@ -45,7 +46,7 @@ const Dropdown = () => {
           }).start();
           lastState = -300;
         } else if (gestureState.dy < -25) {
-          console.log("going up")
+          console.log('going up');
           Animated.timing(animatedValue, {
             //up
             // toValue: Math.abs(Math.abs(currentPos) - 700),

@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
+const navigation = useNavigation();
 const infoScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.question}>get me the fire risk for...</Text>
             <TextInput style={styles.input} placeholder="enter address / leave blank for current location" />
-            <Button title="Submit" onPress={() => { console.log("SUBMITTED INFORMATION LOL")}} />
+            <Button title="Submit" onPress={() => {navigation.navigate('IntroPage') }} />
+
         </View>
     );
 };
