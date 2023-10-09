@@ -11,7 +11,7 @@ Anti-Ignition takes in data from sources like NASA or APIs like *Geolocation* fo
 
 # Functionality
 
-Anti-Ignition is designed for forest fire and wildfire prediction on a global level. It's made simple and easy to access with only a press of a couple buttons to see if your area is at risk or not. 
+Anti-Ignition is designed for forest fire and wildfire prediction on a global level. It's made simple and easy to access with only requiring the press of a single button to see if your area is at risk or not. 
 
 More specifically, the machine learning model is trained using past data on soil moisture, infrared data, vegetation opacity, as well as the levels of gases released from the combustion process. A combination of all these contribute to creating a relationship to past forest fires and risk of fire. The model then looks at the current information for those categories and calculates your risk.
 
