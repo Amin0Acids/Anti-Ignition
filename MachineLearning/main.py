@@ -32,7 +32,8 @@ if __name__ == '__main__':
     x_dataset = x_dataset.numpy()
     y_dataset = y_dataset.numpy()
 
-    x_dataset_train, x_dataset_test, y_dataset_train, y_dataset_test = train_test_split(x_dataset, y_dataset, test_size=0.2, random_state=1234)
+    x_dataset_train, x_dataset_test, y_dataset_train, y_dataset_test = train_test_split(x_dataset, y_dataset,
+                                                                                        test_size=0.2, random_state=1234)
     sc = StandardScaler()
     x_dataset_train = sc.fit_transform(x_dataset_train)
     x_dataset_test = sc.transform(x_dataset_test)
